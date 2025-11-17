@@ -6,7 +6,7 @@ import { isNotNull } from "metabase/lib/types";
 import { getColumnKey } from "metabase-lib/v1/queries/utils/column-key";
 import { isDate, isDimension, isMetric } from "metabase-lib/v1/types/utils/isa";
 
-export const MAX_SERIES = 100;
+export const MAX_SERIES = 10000;
 export const MAX_REASONABLE_SANKEY_DIMENSION_CARDINALITY = 100;
 
 const SPLIT_AXIS_UNSPLIT_COST = -100;

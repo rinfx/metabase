@@ -2,10 +2,13 @@
 # STAGE 1: builder
 ###################
 
-FROM node:22-bullseye AS builder
+FROM registry.cn-hangzhou.aliyuncs.com/rinfx/node:22-bullseye AS builder
 
 ARG MB_EDITION=oss
 ARG VERSION
+
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
 
 WORKDIR /home/node
 
@@ -35,9 +38,11 @@ RUN INTERACTIVE=false CI=true MB_EDITION=$MB_EDITION bin/build.sh :version ${VER
 ## Remember that this runner image needs to be the same as bin/docker/Dockerfile with the exception that this one grabs the
 ## jar from the previous stage rather than the local build
 
-FROM eclipse-temurin:21-jre-alpine AS runner
+FROM registry.cn-hangzhou.aliyuncs.com/rinfx/eclipse-temurin:21-jre-alpine AS runner
 
 ENV FC_LANG=en-US LC_CTYPE=en_US.UTF-8
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
 
 # dependencies
 RUN apk add -U bash fontconfig curl font-noto font-noto-arabic font-noto-hebrew font-noto-cjk java-cacerts && \
