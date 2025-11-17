@@ -53,7 +53,8 @@ export const getSeriesColors = (
 
 export const getSeriesDefaultDisplay = (cardDisplay: string, index: number) => {
   if (cardDisplay === "combo") {
-    return index === 0 ? "line" : "bar";
+    // return index === 0 ? "line" : "bar";
+    return "bar";
   }
 
   return cardDisplay;
