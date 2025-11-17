@@ -55,7 +55,7 @@ export const getGridSizeAdjustedSettings = (
   return newSettings;
 };
 
-export const MAX_SERIES = 100;
+export const MAX_SERIES = 10000;
 
 export const validateChartModel = (chartModel: BaseCartesianChartModel) => {
   if (chartModel.seriesModels.length > MAX_SERIES) {
